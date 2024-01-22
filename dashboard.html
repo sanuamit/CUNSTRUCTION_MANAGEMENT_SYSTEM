@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="icon" type="image/jpg" href="logo.jpg" />
+    <link rel="stylesheet" href="dash.css" />
+    <style>
+      /* Additional CSS for hiding the form and property details by default */
+      #addPropertyForm,
+      #editPropertyForm,
+      .property-details {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <div class="nav-logo">
+          <span>DreamHome Reality!</span>
+        </div>
+        <div class="nav-search">
+          <input type="text" placeholder="Search..." />
+          <button onclick="searchProperty()">Search</button>
+        </div>
+      </nav>
+    </header>
+    <div class="container">
+      <aside>
+        <nav>
+          <div id="loggedInUser">
+            <!-- Display login user name -->
+          </div>
+          <ul id="propertyList">
+            <!-- Display added property lists -->
+          </ul>
+          <button onclick="toggleForm()">Add New Property</button>
+          <button onclick="logout()">Logout</button>
+        </nav>
+      </aside>
+
+      <main>
+        <!-- Add new property form -->
+        <form id="addPropertyForm">
+          <h2>Add New Property</h2>
+          <div class="form-group">
+            <input
+              type="text"
+              id="propertyName"
+              placeholder="Property Name"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <input type="file" id="propertyImage" accept="image/*" required />
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              id="propertyLocation"
+              placeholder="Location"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="number"
+              id="propertyPrice"
+              placeholder="Price"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <textarea
+              id="propertyDescription"
+              placeholder="Description"
+              required
+            ></textarea>
+          </div>
+          <button id="mbutton" type="button" onclick="addProperty()">
+            Add Property
+          </button>
+        </form>
+
+        <!-- Edit property form -->
+        <form id="editPropertyForm">
+          <h2>Edit Property</h2>
+          <div class="form-group">
+            <input
+              type="text"
+              id="editPropertyName"
+              placeholder="Updated Property Name"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="file"
+              id="editpropertyImage"
+              accept="image/*"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              id="editpropertyLocation"
+              placeholder="Updated Location"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="number"
+              id="editpropertyPrice"
+              placeholder="Updated Price"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <textarea
+              id="editpropertyDescription"
+              placeholder="Updated Description"
+              required
+            ></textarea>
+          </div>
+          <button onclick="cancelEdit()">Cancel</button>
+          <button onclick="updateProperty()">Update</button>
+        </form>
+
+        <!-- Display property details -->
+        <div
+          class="property-details"
+          id="propertyDetails"
+          style="display: none"
+        >
+          <h2 id="propertyDetailsName"></h2>
+          <div class="property-info-column">
+            <div class="property-image-column">
+              <img id="propertyDetailsImage" alt="Property Image" />
+            </div>
+            <div class="property-other-column">
+              <p id="propertyDetailsLocation"></p>
+              <p id="propertyDetailsPrice"></p>
+              <p id="propertyDetailsDescription"></p>
+              <button onclick="editProperty()">Edit Property</button>
+              <button onclick="deleteProperty()">Delete Property</button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script src="dash.js"></script>
+  </body>
+</html>
